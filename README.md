@@ -21,7 +21,7 @@ The purpose of this tool is to facilitate the migration of data from one Redis i
 You can specify the path to the configuration file with the `--config` option. By default, it looks for a file named `config.yaml` in the current directory.
 
 ```bash
-npx redis-migrate --config path/to/config.yaml
+npm run start --config path/to/config.yaml
 ```
 
 Here's an example of what the configuration file might look like:
