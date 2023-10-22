@@ -43,11 +43,11 @@ export async function migrate(config: Configuration) {
 }
 
 /**
- * Processes a key from the old Redis instance and migrates it to the new one.
+ * Processes a key from the source Redis instance and migrates it to the target one.
  *
- * @param {RedisClient} sourceRedisClient - The client connected to the old Redis instance.
- * @param {RedisClient} targetRedisClient - The client connected to the new Redis instance.
- * @returns {Function} A function that takes a key, retrieves its data from the old Redis instance, and stores it in the new one.
+ * @param {RedisClient} sourceRedisClient - The client connected to the source Redis instance.
+ * @param {RedisClient} targetRedisClient - The client connected to the target Redis instance.
+ * @returns {Function} A function that takes a key, retrieves its data from the source Redis instance, and stores it in the target one.
  */
 function processKey(sourceRedisClient: RedisClient, targetRedisClient: RedisClient) {
   return async (key: string) => {
