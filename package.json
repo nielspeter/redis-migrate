@@ -1,0 +1,54 @@
+{
+  "name": "redis-migrate",
+  "version": "1.0.0",
+  "description": "Migrate data between two Redis instances",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nielspeter/redis-migrate.git"
+  },
+  "author": "Niels Peter Strandberg (https://github.com/nielspeter)",
+  "license": "MIT",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js",
+    "build": "tsc",
+    "test": "vitest run",
+    "lint": "eslint --fix --ext .ts .",
+    "sourceRedis:start": "docker run -d --rm --name sourceRedis -p 7379:6379 redis/redis-stack:latest",
+    "sourceRedis:stop": "docker stop sourceRedis",
+    "targetRedis:start": "docker run -d --rm --name targetRedis -p 6379:6379 -p 8001:8001 redis/redis-stack:latest",
+    "targetRedis:stop": "docker stop targetRedis",
+    "redis:start": "npm run sourceRedis:start && npm run targetRedis:start",
+    "redis:stop": "npm run sourceRedis:stop && npm run targetRedis:stop"
+  },
+  "bin": {
+    "redis-migrate": "./dist/index.js"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.6",
+    "@types/node": "^20.5.9",
+    "@types/yargs": "^17.0.26",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "@vitest/coverage-v8": "^0.34.6",
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "@vue/eslint-config-typescript": "^11.0.3",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.3",
+    "testcontainers": "^10.2.1",
+    "typescript": "~5.0.4",
+    "vitest": "^0.34.6"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "ora": "^7.0.1",
+    "redis": "^4.1.0",
+    "yargs": "^17.7.2"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

@@ -1,0 +1,10 @@
+chunkSize: 25000
+matchPattern: ""
+sourceRedis:
+  host: "127.0.0.1"
+  port: 7379
+  password: ""
+targetRedis:
+  host: "127.0.0.1"
+  port: 6379
+  password: ""
