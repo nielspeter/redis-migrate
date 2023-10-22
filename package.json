@@ -7,6 +7,10 @@
     "type": "git",
     "url": "git+https://github.com/nielspeter/redis-migrate.git"
   },
+  "bugs": {
+    "url": "https://github.com/nielspeter/redis-migrate/issues"
+  },
+  "homepage": "https://github.com/nielspeter/redis-migrate",
   "author": "Niels Peter Strandberg (https://github.com/nielspeter)",
   "license": "MIT",
   "scripts": {
