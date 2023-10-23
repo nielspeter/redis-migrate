@@ -14,9 +14,9 @@
   "author": "Niels Peter Strandberg (https://github.com/nielspeter)",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "tsc && node dist/index.js",
+    "start": "tsc && node dist/index.js",
     "build": "tsc",
+    "dev": "node --no-warnings --loader ts-node/esm src/index.ts",
     "test": "vitest run",
     "lint": "eslint --fix --ext .ts .",
     "sourceRedis:start": "docker run -d --rm --name sourceRedis -p 7379:6379 redis/redis-stack:latest",
@@ -43,14 +43,15 @@
     "eslint-plugin-prettier": "^5.0.0",
     "prettier": "^3.0.3",
     "testcontainers": "^10.2.1",
+    "ts-node": "^10.9.1",
     "typescript": "~5.0.4",
     "vitest": "^0.34.6"
   },
   "dependencies": {
+    "commander": "^11.1.0",
     "js-yaml": "^4.1.0",
     "ora": "^7.0.1",
-    "redis": "^4.1.0",
-    "yargs": "^17.7.2"
+    "redis": "^4.1.0"
   },
   "engines": {
     "node": ">=16"
