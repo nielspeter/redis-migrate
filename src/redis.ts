@@ -1,6 +1,7 @@
 import type json from '@redis/json';
 import { Configuration, Redis } from './types.js';
 import { createClient, RedisClientType } from 'redis';
+import { ScanCommandOptions } from '@redis/client/dist/lib/commands/SCAN.js';
 
 export type RedisClient = RedisClientType<{ json: typeof json.default }>;
 
@@ -38,20 +39,14 @@ export async function clients(redConfig: Configuration): Promise<RedisClients> {
  * Scans for keys in a Redis instance that match a given pattern.
  *
  * @param {RedisClient} client - The Redis client to scan.
- * @param {string} [pattern='*'] - The pattern to match keys against.
+ * @param {string} [pattern=''] - The pattern to match keys against. If the pattern is 'falsy' (e.g., an empty string), no match is used.
  * @param {number} [count=25000] - The number of keys to scan at once.
  * @returns {Promise<string[]>} A promise that resolves with the matching keys.
  */
-export async function scanForKeys(
-  client: RedisClient,
-  pattern: string = '*',
-  count: number = 25000
-): Promise<string[]> {
+export async function scanForKeys(client: RedisClient, pattern: string = '', count: number = 25000): Promise<string[]> {
+  const options: ScanCommandOptions = pattern ? { MATCH: pattern, COUNT: count } : { COUNT: count };
   const keys: string[] = [];
-  for await (const key of client.scanIterator({
-    MATCH: pattern,
-    COUNT: count,
-  })) {
+  for await (const key of client.scanIterator(options)) {
     if (key) {
       keys.push(key);
     }

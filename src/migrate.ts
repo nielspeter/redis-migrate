@@ -18,7 +18,7 @@ export async function migrate(config: Configuration) {
 
   try {
     migrationSpinner.text =
-      `... scanning for keys` + config.matchPattern ? ` using pattern '${config.matchPattern}'` : '!';
+      '... scanning for keys' + (config.matchPattern ? ` using pattern '${config.matchPattern}'` : '!');
     const keys = await scanForKeys(sourceRedisClient, config.matchPattern);
 
     migrationSpinner.text = `Found ${keys.length} keys, starting migration...`;
