@@ -26,6 +26,17 @@ You can specify the path to the configuration file with the `--config` option. B
 npm run start -- --config=path/to/config.yaml
 ```
 
+Alternatively, you can build the project and link it to your local npm package list. This allows you to run the script from anywhere using `npx`.
+```bash
+npm run build
+npm link
+```
+
+After linking, you can run the script with:
+```bash
+npx redis-migrate --config=path/to/config.yaml
+```
+
 Here's an example of what the configuration file might look like:
 ```yaml
 chunkSize: 25000
