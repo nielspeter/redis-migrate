@@ -42,7 +42,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "prettier": "^3.0.3",
-    "testcontainers": "^10.2.1",
+    "testcontainers": "^10.28.0",
     "ts-node": "^10.9.1",
     "typescript": "~5.0.4",
     "vitest": "^0.34.6"
